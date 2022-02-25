@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<button onclick="saveData()">点我保存数据</button>
+<button onclick="readData()">点我读取数据</button>
+<button onclick="deleteData()">点我删除数据</button>
+<button onclick="deleteAllData()">点我清空数据</button>
 </body>
+<script>
+    //数据临时存储，会话结束后数据消失
+    let p = {name:"张三",age:18}
+
+    function saveData() {
+        sessionStorage.setItem("msg","hello")
+        sessionStorage.setItem("msg2","world")
+        // 不能直接使用p，因为localStorage会自动把数据转换成字符串，
+        // 而p是对象，要用JSON.stringify(p)转换成json格式
+        sessionStorage.setItem("person",JSON.stringify(p))
+    }
+
+    function readData() {
+        console.log(sessionStorage.getItem("msg"))
+        console.log(sessionStorage.getItem("msg2"))
+        //JSON.parse() 把json数据转换回来
+        const result = JSON.parse(sessionStorage.getItem("person"))
+        console.log(result)
+    }
+
+    function deleteData() {
+        sessionStorage.removeItem("msg")
+        sessionStorage.removeItem("msg2")
+    }
+
+    function deleteAllData() {
+        sessionStorage.clear()
+    }
+</script>
 </html>

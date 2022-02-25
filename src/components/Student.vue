@@ -2,6 +2,7 @@
     <div id="box">
         <h2>学生姓名:{{studentName}}</h2>
         <h2>年龄:{{age}}</h2>
+        <button @click="sendStudentName">把学生名给App</button>
     </div>
 </template>
 
@@ -12,6 +13,12 @@
             return {
                 studentName:"张三",
                 age:20
+            }
+        },
+        methods:{
+            sendStudentName(){
+                //触发Student组件实例对象身上的xxxxxx事件
+                this.$emit("xxxxxx",this.studentName)
             }
         }
     }

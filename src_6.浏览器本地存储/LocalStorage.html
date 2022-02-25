@@ -2,9 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<button onclick="saveData()">点我保存数据</button>
+<button onclick="readData()">点我读取数据</button>
+<button onclick="deleteData()">点我删除数据</button>
+<button onclick="deleteAllData()">点我清空数据</button>
 </body>
+<script>
+
+    //永久存储在硬盘，关闭浏览器数据不会消失
+    //只有当用户清空缓存或引导用户去调用清空函数，数据才会消失
+    let p = {name:"张三",age:18}
+
+    //保存数据
+    function saveData() {
+        localStorage.setItem("msg","hello")
+        localStorage.setItem("msg2","world")
+        // 不能直接使用p，因为localStorage会自动把数据转换成字符串，
+        // 而p是对象，要用JSON.stringify(p)转换成json格式
+        localStorage.setItem("person",JSON.stringify(p))
+    }
+
+    //读取数据
+    function readData() {
+        console.log(localStorage.getItem("msg"))
+        console.log(localStorage.getItem("msg2"))
+        //JSON.parse() 把json数据转换回来
+        const result = JSON.parse(localStorage.getItem("person"))
+        console.log(result)
+
+    //    console.log(JSON.parse(null))  //null
+    //    localStorage.setItem("xxx")   //如果xxx的value的值获取不到，那么localStorage.getItem("xxx")是null
+    }
+
+    //删除数据
+    function deleteData() {
+        localStorage.removeItem("msg")
+        localStorage.removeItem("msg2")
+    }
+
+    //清空数据
+    function deleteAllData() {
+        localStorage.clear()
+    }
+</script>
 </html>
