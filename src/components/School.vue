@@ -23,7 +23,7 @@
         methods:{
             getSchoolName(){
                 console.log(this.msg_to_school)
-            }
+            },
         }
     }
 </script>

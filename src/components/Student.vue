@@ -18,6 +18,8 @@
         methods:{
             sendStudentName(){
                 //触发Student组件实例对象身上的xxxxxx事件
+                //this $emit（'自定义时间名',要传送的数据）
+                //触发当前实例上的时间，要传递的数据会传给监听器
                 this.$emit("xxxxxx",this.studentName)
             }
         }
